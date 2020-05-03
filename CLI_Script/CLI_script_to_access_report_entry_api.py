@@ -3,12 +3,16 @@ import requests
 import json
 import os
 from datetime import datetime
+import sys
+
 
 headers={'user-agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.70 Mobile Safari/537.36'}
 
 base_address = "http://127.0.0.1:5000"
 system = ["windows","linux"][os.name!="nt"]
 
+root_username = sys.argv[1]
+root_password = sys.argv[2]
 
 def print_msg( msg ):
 	clear_screen()
@@ -61,7 +65,7 @@ def login( session, username, password ):
 			print( i )
 	else:
 		print( json_response['error'] )
-
+		exit()
 
 def create_user( session, username, password ):
 	data = { "username" : username, "password": password } 
@@ -251,9 +255,7 @@ with requests.Session() as s:
 		clear_screen()
 
 		if ch=="1":
-			username = input("\nEnter Username:")
-			password = input("\nEnter Password:")
-			msg = create_user( s, username, password )
+			msg = create_user( s, root_username, root_password )
 			print_msg( msg )
 
 		elif ch=="2":
