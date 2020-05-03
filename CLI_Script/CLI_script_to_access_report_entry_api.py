@@ -5,7 +5,6 @@ import os
 from datetime import datetime
 import sys
 
-
 headers={'user-agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.70 Mobile Safari/537.36'}
 
 base_address = "http://127.0.0.1:5000"
@@ -244,7 +243,7 @@ check_internet()
 
 with requests.Session() as s:
 	
-	login( s, username="chirag",password=9466201496 )
+	login( s, username=root_username,password=root_password )
 
 	while (1):
 
@@ -255,7 +254,9 @@ with requests.Session() as s:
 		clear_screen()
 
 		if ch=="1":
-			msg = create_user( s, root_username, root_password )
+			username = input("\nEnter Username:")
+			password = input("\nEnter Password:")
+			msg = create_user( s, username, password )
 			print_msg( msg )
 
 		elif ch=="2":
