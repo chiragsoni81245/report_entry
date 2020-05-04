@@ -3,3 +3,4 @@ app/__pycache__
 app/*.pyc
 migrations
 database.db
+venv/

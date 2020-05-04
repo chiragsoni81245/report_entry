@@ -6,7 +6,7 @@ root_password = input("\nEnter Root Password:")
 user = User( username=root_user )
 user.set_password( root_password )
 
-db.session.add(root_user)
+db.session.add( user )
 db.session.commit()
 print("*** Root User {} Created ***".format(root_user))
 
