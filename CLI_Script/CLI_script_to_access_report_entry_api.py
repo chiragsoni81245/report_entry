@@ -279,7 +279,7 @@ with requests.Session() as s:
 				option = input("\nUse today's Date Yes[y] or No[n]:")[0].lower()
 				if option=="n":
 					d["date"] = input("\nEnter Date in format(YYYY-MM-DD):")
-				elif option=="y":
+				elif option=="y" or option=="":
 					d["date"] = datetime.now().strftime("%Y-%m-%d")
 				else:
 					clear_screen()
@@ -304,7 +304,7 @@ with requests.Session() as s:
 				option = input("\nUse today's Date Yes[y] or No[n]:")[0].lower()
 				if option=="n":
 					d["date"] = input("\nEnter Date in format(YYYY-MM-DD):")
-				elif option=="y":
+				elif option=="y" or option=="":
 					d["date"] = datetime.now().strftime("%Y-%m-%d")
 				else:
 					clear_screen()
