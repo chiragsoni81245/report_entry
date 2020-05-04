@@ -21,7 +21,7 @@ Linux User use:
     
 3. start API server( run all these command in root directory of project ):
     **( everytime you run API server you have to run this 2 command )**
-    1. for Windows : ```set FLASK_APP=run.py```, for Linux : ```export FLASK_APP=run.py``` 
+    1. for **Windows** : ```set FLASK_APP=run.py```, for **Linux** : ```export FLASK_APP=run.py``` 
     2. to run API server ```flask run```
     
 4. Control API with CLI_script:
