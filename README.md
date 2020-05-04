@@ -1,6 +1,8 @@
 # report_entry
 this will help you to record your team reporting so that you can track your whole team growth 
 
+![CLI Preview](/preview_image/Capture1.PNG)
+
 **Steps To start Work on it**:
 
 Linux User use:
