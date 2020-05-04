@@ -24,8 +24,8 @@ Linux User use:
     1. for Windows : ```set FLASK_APP=run.py```, for Linux : ```export FLASK_APP=run.py``` 
     2. to run API server ```flask run```
     
-Control API with CLI_script:
+4. Control API with CLI_script:
     1. goto CLI directory in project 
     2. run CLI script ```python CLI_script_to_access_report_entry_api.py root_username root_password```
     
-    ** Thats it now you can start intrating with api on  your local PC **
+    **Thats it now you can start intrating with api on  your local PC**
