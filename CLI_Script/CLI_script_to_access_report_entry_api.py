@@ -209,7 +209,7 @@ def display_reporting( reporting ):
 		if len(reporting[user])==0:
 			print(" \t No Reporting!")
 		for id,report,date in reporting[user]:
-			print(" {}.\t{} :report >>> {}".format(id,date,report))
+			print('id: \033[31m{}\033[0m.\t{}  \033[32m"{}\033[0m"'.format(id,date,report))
 
 		print("\n"+"-"*40, end="\n\n")
 
