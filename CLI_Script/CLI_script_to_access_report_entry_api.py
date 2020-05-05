@@ -49,6 +49,8 @@ def check_internet():
 
 def login( session, username, password ):
 
+	check_internet()
+
 	data = { "username" : username, "password" : password }
 
 	response = session.post( base_address + "/login_page",data=data,headers=headers)	
@@ -66,7 +68,10 @@ def login( session, username, password ):
 		print( json_response['error'] )
 		exit()
 
+
 def create_user( session, username, password ):
+	
+	check_internet()
 	data = { "username" : username, "password": password } 
 	response = session.post( base_address+"/register", data=data, headers=headers )
 
@@ -88,6 +93,8 @@ def create_user( session, username, password ):
 
 
 def submit_report( session, report ):
+	
+	check_internet()
 	data = { "report" : report }
 	response = session.post( base_address + "/add_report", json=data, headers=headers )
 
@@ -110,6 +117,8 @@ def submit_report( session, report ):
 
 def create_role( session, username, role_no ):
 
+	check_internet()
+	
 	data = { "username" : username, "role_no" : role_no }
 
 	response = session.post( base_address + "/add_role", json=data, headers=headers )
@@ -133,6 +142,8 @@ def create_role( session, username, role_no ):
 
 def fetch_user( session ):
 
+	check_internet()
+	
 	response = session.get( base_address + "/fetch_user", headers=headers )
 
 	try:
@@ -154,6 +165,8 @@ def fetch_user( session ):
 
 def fetch_reporting( session, user_list, _filter_ ):
 
+	check_internet()
+	
 	data = { "user_list" : user_list, "filter" : _filter_ }
 	response = session.post( base_address + "/fetch_reporting", json=data, headers=headers )
 
@@ -175,7 +188,7 @@ def fetch_reporting( session, user_list, _filter_ ):
 
 
 def fetch_reporting_caller( session ):
-
+	
 	no_of_user = input("\nNumber of User ( type ALL for all users ):")
 	user_list = []
 	_filter_ = {}
@@ -217,6 +230,8 @@ def display_reporting( reporting ):
 
 
 def delete_report( session, report_id_list ):
+	
+	check_internet()
 	
 	data = { "report_id_list" : report_id_list }
 
