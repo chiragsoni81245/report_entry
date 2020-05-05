@@ -32,12 +32,12 @@ def clear_screen():
 def check_internet():
 	while(1):
 		try:
-			ip_address = socket.gethostbyname( "www.google.com" )
+			check_response = json.loads( requests.get( base_address + "/check_server" ).text )
 		except:
-			ip_address="127.0.0.1"
+			check_response = False
 
-		if ip_address=="127.0.0.1":
-			print("No Internet Connection!")
+		if check_response==False or check_response['returncode']!=0:
+			print("No Internet Connection! or Server Can't Rechable")
 			if input("\n\nWana Retry? Yes[y] No[n] :")[0].lower()=="n":
 				exit()
 		else:

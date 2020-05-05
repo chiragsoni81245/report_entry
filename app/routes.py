@@ -16,6 +16,11 @@ def valid_date(datestring):
 			pass
 	return False
 
+@app.route("/check_server", methods=["GET"])
+def check_server():
+	return jsonify({ "returncode" : 0 })
+
+
 @app.route("/login_page", methods=["GET","POST"])
 def login_page():
 	if request.method=="POST":
