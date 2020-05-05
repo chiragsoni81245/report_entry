@@ -50,11 +50,15 @@ def logout():
 def register():
 	if request.method=="POST":
 		if ( "username" in request.form ) and ( "password" in request.form ):
-			user = User( username=request.form["username"] )
-			user.set_password( request.form['password'] )
-			db.session.add(user)
-			db.session.commit()
-			return jsonify({ "returncode":0, "msg": [ "{} is Successfully added".format(user.username) ] })
+			user_exist = User.query.filter_by(username=request.form['username']).first()
+			if not user_exist:
+				user = User( username=request.form["username"] )
+				user.set_password( request.form['password'] )
+				db.session.add(user)
+				db.session.commit()
+				return jsonify({ "returncode":0, "msg": [ "{} is Successfully added".format(user.username) ] })
+			else:
+				return jsonify({ "returncode":1, "error": "{} is already exists".format(user_exist.username) })
 
 	return jsonify({ "returncode":1, "error":"invalid username or password" })
 
@@ -69,10 +73,14 @@ def add_role():
 			if  data["role_no"].isnumeric() and int(data['role_no'])<=500 and int(data['role_no'])>=100:
 				user = User.query.filter_by(username=data['username']).first()
 				if user:
-					role = RoleManager( role_no=int(data['role_no']), user=user.id  )
-					db.session.add( role )
-					db.session.commit()
-					return jsonify({ "returncode":0, "msg": [ "role of {} for user {} has been succesfully added".format(role.role_no,user.username) ] })
+					role_exist = RoleManager.query.filter_by(user=user.id,role_no=int(data["role_no"])).first()
+					if not role_exist:
+						role = RoleManager( role_no=int(data['role_no']), user=user.id  )
+						db.session.add( role )
+						db.session.commit()
+						return jsonify({ "returncode":0, "msg": [ "role of {} for user {} has been succesfully added".format(role.role_no,user.username) ] })
+					else:
+						return jsonify({ "returncode":1, "error" : "This role {} is already exists for user {}".format(role_exist.role_no,user.username) })
 
 	return jsonify({ "returncode":1, "error":"invalid Values" })
 

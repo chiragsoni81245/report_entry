@@ -38,7 +38,8 @@ def check_internet():
 
 		if check_response==False or check_response['returncode']!=0:
 			print("No Internet Connection! or Server Can't Rechable")
-			if input("\n\nWana Retry? Yes[y] No[n] :")[0].lower()=="n":
+			option = input("\n\nWana Retry? Yes[y] No[n] :")
+			if option!="" and option[0].lower()=="n":
 				exit()
 		else:
 			print("************ Internet Connected ***************")
@@ -205,7 +206,8 @@ def fetch_reporting_caller( session ):
 		input("\nPress Enter")
 		return None
 
-	if input("\nFilter By Date Yes[y] No[n]:")[0].lower()=="y":
+	option = input("\nFilter By Date Yes[y] No[n]:")
+	if option!="" and option[0].lower()=="y":
 		start_date = input("\nIf you wana ignore start date just press enter\n Enter Start Date in format (YYYY-MM-DD):")
 		end_date = input("\nIf you wana ignore end date just press enter\n Enter end Date in format (YYYY-MM-DD):")
 		
@@ -289,10 +291,10 @@ with requests.Session() as s:
 				d={}
 				d["username"] = input("\nEnter Username:")
 				d["report"] = input("\nEnter Report:")
-				option = input("\nUse today's Date Yes[y] or No[n]:")[0].lower()
-				if option=="n":
+				option = input("\nUse today's Date Yes[y] or No[n]:")
+				if option!="" and option[0].lower()=="n":
 					d["date"] = input("\nEnter Date in format(YYYY-MM-DD):")
-				elif option=="y" or option=="":
+				elif option=="" or option[0].lower()=="y":
 					d["date"] = datetime.now().strftime("%Y-%m-%d")
 				else:
 					clear_screen()
@@ -314,10 +316,10 @@ with requests.Session() as s:
 				d={ "username" : i }
 				print("\n\t\t{}".format(i))
 				d["report"] = input("\nEnter Report:")
-				option = input("\nUse today's Date Yes[y] or No[n]:")[0].lower()
-				if option=="n":
+				option = input("\nUse today's Date Yes[y] or No[n]:")
+				if option!="" and option[0].lower()=="n":
 					d["date"] = input("\nEnter Date in format(YYYY-MM-DD):")
-				elif option=="y" or option=="":
+				elif option=="" or option[0].lower()=="y":
 					d["date"] = datetime.now().strftime("%Y-%m-%d")
 				else:
 					clear_screen()
