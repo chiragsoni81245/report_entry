@@ -254,8 +254,6 @@ def delete_report( session, report_id_list ):
 		return None
 
 
-check_internet()
-
 with requests.Session() as s:
 	
 	login( s, username=root_username,password=root_password )
@@ -375,4 +373,3 @@ with requests.Session() as s:
 			print("Invalid Input") 
 
 		clear_screen()
-		check_internet()
